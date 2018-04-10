@@ -2,6 +2,14 @@
 
 A versatile infinite scroll [React] component.
 
+## Table of Contents
+- [Install](#install)
+- [Examples](#examples)
+- [Props](#props)
+- [Methods](#methods)
+- [FAQ](#faq)
+- [Development](#development)
+
 ## Install
 
 ```bash
