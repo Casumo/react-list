@@ -2,6 +2,14 @@
 
 A versatile infinite scroll [React] component.
 
+## Table of Contents
+- [Install](#install)
+- [Examples](#examples)
+- [Props](#props)
+- [Methods](#methods)
+- [FAQ](#faq)
+- [Development](#development)
+
 ## Install
 
 ```bash
@@ -215,6 +223,21 @@ ReactList component:
 ```bash
 open docs/index.html
 make
+```
+
+### How to develop by linking to a project?
+
+If you are using `npm link` or `yarn link` to link this package to your project,
+it can happen that react will be a missing dependency on build.
+
+If you are using Webpack a possible solution is to add a path to the aliases in the webpack config:
+```javascript
+resolve: {
+    alias: {
+        'react': path.resolve(__dirname, '../node_modules/preact-compat'),
+        'react-dom': path.resolve(__dirname, '../node_modules/preact-compat')
+    }
+},
 ```
 
 [React]: https://github.com/facebook/react
