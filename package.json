@@ -2,6 +2,9 @@
   "name": "react-list",
   "version": "0.8.8",
   "author": "Casey Foster <c@sey.me>",
+  "contributors": [
+    "Casumo <frontend@casumo.com> (https://www.casumo.com/)"
+  ],
   "license": "MIT",
   "main": "react-list.js",
   "repository": {
