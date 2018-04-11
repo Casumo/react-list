@@ -1,6 +1,6 @@
 {
   "name": "react-list",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "author": "Casey Foster <c@sey.me>",
   "contributors": [
     "Casumo <frontend@casumo.com> (https://www.casumo.com/)"
@@ -16,6 +16,10 @@
   },
   "peerDependencies": {
     "react": "0.14 || 15 || 16"
+  },
+  "publishConfig": {
+    "scope": "@casumo",
+    "registry": "http://npm.casumotest.local:4874"
   },
   "devDependencies": {
     "babel-eslint": "7.2.3",
