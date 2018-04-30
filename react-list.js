@@ -90,6 +90,7 @@
   // If a browser doesn't support the `options` argument to
   // add/removeEventListener, we need to check, otherwise we will
   // accidentally set `capture` with a truthy value.
+
   var PASSIVE = function () {
     if (typeof window === 'undefined') return false;
     var hasSupport = false;
@@ -207,6 +208,10 @@
     }, {
       key: 'getEl',
       value: function getEl() {
+        if (this.props.el) {
+          return this.props.el;
+        }
+
         return this.el || this.items;
       }
     }, {

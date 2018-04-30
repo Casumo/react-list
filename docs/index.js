@@ -213,11 +213,9 @@ Cogs.define("node_modules/fbjs/lib/emptyFunction.js", ["node_modules"], ["node_m
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -251,12 +249,10 @@ module.exports = emptyFunction;
 });
 Cogs.define("node_modules/fbjs/lib/warning.js", ["node_modules"], ["node_modules/fbjs/lib/warning"], {"./emptyFunction":"node_modules/fbjs/lib/emptyFunction.js"}, function (require, exports, module) {
 /**
- * Copyright 2014-2015, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -444,11 +440,9 @@ module.exports = canDefineProperty;
 Cogs.define("node_modules/fbjs/lib/emptyObject.js", ["node_modules"], ["node_modules/fbjs/lib/emptyObject"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -466,11 +460,9 @@ module.exports = emptyObject;
 Cogs.define("node_modules/fbjs/lib/invariant.js", ["node_modules"], ["node_modules/fbjs/lib/invariant"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2675,12 +2667,10 @@ module.exports = ReactDOMFactories;
 });
 Cogs.define("node_modules/prop-types/lib/ReactPropTypesSecret.js", ["node_modules"], ["node_modules/prop-types/lib/ReactPropTypesSecret"], {}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 'use strict';
@@ -2692,12 +2682,10 @@ module.exports = ReactPropTypesSecret;
 });
 Cogs.define("node_modules/prop-types/checkPropTypes.js", ["node_modules"], ["node_modules/prop-types/checkPropTypes"], {"fbjs/lib/invariant":"node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"node_modules/fbjs/lib/warning.js","./lib/ReactPropTypesSecret":"node_modules/prop-types/lib/ReactPropTypesSecret.js"}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 'use strict';
@@ -2733,7 +2721,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, _typeof(typeSpecs[typeSpecName]));
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
@@ -2756,14 +2744,12 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 module.exports = checkPropTypes;
 
 });
-Cogs.define("node_modules/prop-types/factoryWithTypeCheckers.js", ["node_modules"], ["node_modules/prop-types/factoryWithTypeCheckers"], {"fbjs/lib/emptyFunction":"node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/invariant":"node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"node_modules/fbjs/lib/warning.js","./lib/ReactPropTypesSecret":"node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"node_modules/prop-types/checkPropTypes.js"}, function (require, exports, module) {
+Cogs.define("node_modules/prop-types/factoryWithTypeCheckers.js", ["node_modules"], ["node_modules/prop-types/factoryWithTypeCheckers"], {"fbjs/lib/emptyFunction":"node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/invariant":"node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"node_modules/fbjs/lib/warning.js","object-assign":"node_modules/object-assign/index.js","./lib/ReactPropTypesSecret":"node_modules/prop-types/lib/ReactPropTypesSecret.js","./checkPropTypes":"node_modules/prop-types/checkPropTypes.js"}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 'use strict';
@@ -2773,6 +2759,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var emptyFunction = require('fbjs/lib/emptyFunction');
 var invariant = require('fbjs/lib/invariant');
 var warning = require('fbjs/lib/warning');
+var assign = require('object-assign');
 
 var ReactPropTypesSecret = require('./lib/ReactPropTypesSecret');
 var checkPropTypes = require('./checkPropTypes');
@@ -2871,7 +2858,8 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
     objectOf: createObjectOfTypeChecker,
     oneOf: createEnumTypeChecker,
     oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker
   };
 
   /**
@@ -3068,7 +3056,7 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
     for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
       var checker = arrayOfTypeCheckers[i];
       if (typeof checker !== 'function') {
-        warning(false, 'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
+        warning(false, 'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' + 'received %s at index %s.', getPostfixForTypeWarning(checker), i);
         return emptyFunction.thatReturnsNull;
       }
     }
@@ -3115,6 +3103,32 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
       }
       return null;
     }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' + '\nBad object: ' + JSON.stringify(props[propName], null, '  ') + '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  '));
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
     return createChainableTypeChecker(validate);
   }
 
@@ -3253,12 +3267,10 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 });
 Cogs.define("node_modules/prop-types/factory.js", ["node_modules"], ["node_modules/prop-types/factory"], {"./factoryWithTypeCheckers":"node_modules/prop-types/factoryWithTypeCheckers.js"}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 'use strict';
@@ -3315,12 +3327,10 @@ module.exports = '15.6.1';
 });
 Cogs.define("node_modules/create-react-class/factory.js", ["node_modules"], ["node_modules/create-react-class/factory"], {"object-assign":"node_modules/object-assign/index.js","fbjs/lib/emptyObject":"node_modules/fbjs/lib/emptyObject.js","fbjs/lib/invariant":"node_modules/fbjs/lib/invariant.js","fbjs/lib/warning":"node_modules/fbjs/lib/warning.js"}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3590,6 +3600,27 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
      */
     componentWillUnmount: 'DEFINE_MANY',
 
+    /**
+     * Replacement for (deprecated) `componentWillMount`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillMount: 'DEFINE_MANY',
+
+    /**
+     * Replacement for (deprecated) `componentWillReceiveProps`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillReceiveProps: 'DEFINE_MANY',
+
+    /**
+     * Replacement for (deprecated) `componentWillUpdate`.
+     *
+     * @optional
+     */
+    UNSAFE_componentWillUpdate: 'DEFINE_MANY',
+
     // ==== Advanced methods ====
 
     /**
@@ -3603,6 +3634,23 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
      * @overridable
      */
     updateComponent: 'OVERRIDE_BASE'
+  };
+
+  /**
+   * Similar to ReactClassInterface but for static methods.
+   */
+  var ReactClassStaticInterface = {
+    /**
+     * This method is invoked after a component is instantiated and when it
+     * receives new props. Return an object to update state in response to
+     * prop changes. Return null to indicate no change to state.
+     *
+     * If an object is returned, its keys will be merged into the existing state.
+     *
+     * @return {object || null}
+     * @optional
+     */
+    getDerivedStateFromProps: 'DEFINE_MANY_MERGED'
   };
 
   /**
@@ -3778,6 +3826,7 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
     if (!statics) {
       return;
     }
+
     for (var name in statics) {
       var property = statics[name];
       if (!statics.hasOwnProperty(name)) {
@@ -3787,8 +3836,17 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
       var isReserved = name in RESERVED_SPEC_KEYS;
       _invariant(!isReserved, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name);
 
-      var isInherited = name in Constructor;
-      _invariant(!isInherited, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
+      var isAlreadyDefined = name in Constructor;
+      if (isAlreadyDefined) {
+        var specPolicy = ReactClassStaticInterface.hasOwnProperty(name) ? ReactClassStaticInterface[name] : null;
+
+        _invariant(specPolicy === 'DEFINE_MANY_MERGED', 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name);
+
+        Constructor[name] = createMergedResultFunction(Constructor[name], property);
+
+        return;
+      }
+
       Constructor[name] = property;
     }
   }
@@ -4032,6 +4090,7 @@ function factory(ReactComponent, isValidElement, ReactNoopUpdateQueue) {
     if ('development' !== 'production') {
       warning(!Constructor.prototype.componentShouldUpdate, '%s has a method called ' + 'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' + 'The name is phrased as a question because the function is ' + 'expected to return a value.', spec.displayName || 'A component');
       warning(!Constructor.prototype.componentWillRecieveProps, '%s has a method called ' + 'componentWillRecieveProps(). Did you mean componentWillReceiveProps()?', spec.displayName || 'A component');
+      warning(!Constructor.prototype.UNSAFE_componentWillRecieveProps, '%s has a method called UNSAFE_componentWillRecieveProps(). ' + 'Did you mean UNSAFE_componentWillReceiveProps()?', spec.displayName || 'A component');
     }
 
     // Reduce time spent doing lookups by setting these on the prototype.
@@ -5871,11 +5930,9 @@ module.exports = EventPropagators;
 Cogs.define("node_modules/fbjs/lib/ExecutionEnvironment.js", ["node_modules"], ["node_modules/fbjs/lib/ExecutionEnvironment"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7296,11 +7353,9 @@ module.exports = ReactHostOperationHistoryHook;
 Cogs.define("node_modules/fbjs/lib/performance.js", ["node_modules"], ["node_modules/fbjs/lib/performance"], {"./ExecutionEnvironment":"node_modules/fbjs/lib/ExecutionEnvironment.js"}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -7323,11 +7378,9 @@ Cogs.define("node_modules/fbjs/lib/performanceNow.js", ["node_modules"], ["node_
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -10018,11 +10071,9 @@ Cogs.define("node_modules/fbjs/lib/createArrayFromMixed.js", ["node_modules"], [
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -10149,11 +10200,9 @@ Cogs.define("node_modules/fbjs/lib/getMarkupWrap.js", ["node_modules"], ["node_m
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10246,11 +10295,9 @@ Cogs.define("node_modules/fbjs/lib/createNodesFromMarkup.js", ["node_modules"], 
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -10671,11 +10718,9 @@ module.exports = ReactComponentBrowserEnvironment;
 Cogs.define("node_modules/fbjs/lib/focusNode.js", ["node_modules"], ["node_modules/fbjs/lib/focusNode"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10884,11 +10929,9 @@ Cogs.define("node_modules/fbjs/lib/camelize.js", ["node_modules"], ["node_module
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -10916,11 +10959,9 @@ module.exports = camelize;
 Cogs.define("node_modules/fbjs/lib/camelizeStyleName.js", ["node_modules"], ["node_modules/fbjs/lib/camelizeStyleName"], {"./camelize":"node_modules/fbjs/lib/camelize.js"}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -11041,11 +11082,9 @@ Cogs.define("node_modules/fbjs/lib/hyphenate.js", ["node_modules"], ["node_modul
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -11074,11 +11113,9 @@ module.exports = hyphenate;
 Cogs.define("node_modules/fbjs/lib/hyphenateStyleName.js", ["node_modules"], ["node_modules/fbjs/lib/hyphenateStyleName"], {"./hyphenate":"node_modules/fbjs/lib/hyphenate.js"}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -11115,11 +11152,9 @@ module.exports = hyphenateStyleName;
 Cogs.define("node_modules/fbjs/lib/memoizeStringOnly.js", ["node_modules"], ["node_modules/fbjs/lib/memoizeStringOnly"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  * @typechecks static-only
@@ -13282,11 +13317,9 @@ module.exports = checkReactTypeSpec;
 Cogs.define("node_modules/fbjs/lib/shallowEqual.js", ["node_modules"], ["node_modules/fbjs/lib/shallowEqual"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  * 
@@ -17844,11 +17877,9 @@ Cogs.define("node_modules/fbjs/lib/EventListener.js", ["node_modules"], ["node_m
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -17921,11 +17952,9 @@ module.exports = EventListener;
 Cogs.define("node_modules/fbjs/lib/getUnboundedScrollPosition.js", ["node_modules"], ["node_modules/fbjs/lib/getUnboundedScrollPosition"], {}, function (require, exports, module) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -18447,11 +18476,9 @@ Cogs.define("node_modules/fbjs/lib/isNode.js", ["node_modules"], ["node_modules/
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -18477,11 +18504,9 @@ Cogs.define("node_modules/fbjs/lib/isTextNode.js", ["node_modules"], ["node_modu
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -18504,11 +18529,9 @@ Cogs.define("node_modules/fbjs/lib/containsNode.js", ["node_modules"], ["node_mo
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -18546,11 +18569,9 @@ Cogs.define("node_modules/fbjs/lib/getActiveElement.js", ["node_modules"], ["nod
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -21445,12 +21466,10 @@ module.exports = require('./lib/ReactDOM');
 });
 Cogs.define("node_modules/prop-types/factoryWithThrowingShims.js", ["node_modules"], ["node_modules/prop-types/factoryWithThrowingShims"], {"fbjs/lib/emptyFunction":"node_modules/fbjs/lib/emptyFunction.js","fbjs/lib/invariant":"node_modules/fbjs/lib/invariant.js","./lib/ReactPropTypesSecret":"node_modules/prop-types/lib/ReactPropTypesSecret.js"}, function (require, exports, module) {
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 'use strict';
@@ -21490,7 +21509,8 @@ module.exports = function () {
     objectOf: getShim,
     oneOf: getShim,
     oneOfType: getShim,
-    shape: getShim
+    shape: getShim,
+    exact: getShim
   };
 
   ReactPropTypes.checkPropTypes = emptyFunction;
@@ -21506,12 +21526,10 @@ Cogs.define("node_modules/prop-types/index.js", ["node_modules"], ["node_modules
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 if ('development' !== 'production') {
@@ -21563,20 +21581,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       default: obj
     };
   }
-
-  var _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -21682,6 +21686,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           from = _this$constrain.from,
           size = _this$constrain.size;
 
+      _this.window = props.window || window;
+      _this.document = _this.window.document;
       _this.state = { from: from, size: size, itemsPerRow: itemsPerRow };
       _this.cache = {};
       _this.prevPrevState = {};
@@ -21739,7 +21745,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     }, {
       key: 'componentWillUnmount',
       value: function componentWillUnmount() {
-        window.removeEventListener('resize', this.updateFrame);
+        this.window.removeEventListener('resize', this.updateFrame);
         this.scrollParent.removeEventListener('scroll', this.updateFrame, PASSIVE);
         this.scrollParent.removeEventListener('mousewheel', NOOP, PASSIVE);
       }
@@ -21771,25 +21777,28 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var el = this.getEl();
         var overflowKey = OVERFLOW_KEYS[axis];
         while (el = el.parentElement) {
-          switch (window.getComputedStyle(el)[overflowKey]) {
+          switch (this.window.getComputedStyle(el)[overflowKey]) {
             case 'auto':case 'scroll':case 'overlay':
               return el;
           }
         }
-        return window;
+        return this.window;
       }
     }, {
       key: 'getScroll',
       value: function getScroll() {
         var scrollParent = this.scrollParent;
+        var _document = this.document,
+            body = _document.body,
+            documentElement = _document.documentElement;
         var axis = this.props.axis;
 
         var scrollKey = SCROLL_START_KEYS[axis];
-        var actual = scrollParent === window ?
+        var actual = scrollParent === this.window ?
         // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
         // always return document.documentElement[scrollKey] as 0, so take
         // whichever has a value.
-        document.body[scrollKey] || document.documentElement[scrollKey] : scrollParent[scrollKey];
+        body[scrollKey] || documentElement[scrollKey] : scrollParent[scrollKey];
         var max = this.getScrollSize() - this.getViewportSize();
         var scroll = Math.max(0, Math.min(actual, max));
         var el = this.getEl();
@@ -21802,7 +21811,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var axis = this.props.axis;
 
         offset += this.getOffset(this.getEl());
-        if (scrollParent === window) return window.scrollTo(0, offset);
+        if (scrollParent === this.window) return this.window.scrollTo(0, offset);
 
         offset -= this.getOffset(this.scrollParent);
         scrollParent[SCROLL_START_KEYS[axis]] = offset;
@@ -21813,18 +21822,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var scrollParent = this.scrollParent;
         var axis = this.props.axis;
 
-        return scrollParent === window ? window[INNER_SIZE_KEYS[axis]] : scrollParent[CLIENT_SIZE_KEYS[axis]];
+        return scrollParent === this.window ? this.window[INNER_SIZE_KEYS[axis]] : scrollParent[CLIENT_SIZE_KEYS[axis]];
       }
     }, {
       key: 'getScrollSize',
       value: function getScrollSize() {
         var scrollParent = this.scrollParent;
-        var _document = document,
-            body = _document.body,
-            documentElement = _document.documentElement;
+        var _document2 = this.document,
+            body = _document2.body,
+            documentElement = _document2.documentElement;
 
         var key = SCROLL_SIZE_KEYS[this.props.axis];
-        return scrollParent === window ? Math.max(body[key], documentElement[key]) : scrollParent[key];
+        return scrollParent === this.window ? Math.max(body[key], documentElement[key]) : scrollParent[key];
       }
     }, {
       key: 'hasDeterminateSize',
@@ -22182,9 +22191,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           WebkitTransform: transform,
           transform: transform
         };
-        return _react2.default.createElement('div', _extends({ style: style }, { ref: function ref(c) {
+        return _react2.default.createElement('div', { style: style, ref: function ref(c) {
             return _this4.el = c;
-          } }), _react2.default.createElement('div', { style: listStyle }, items));
+          } }, _react2.default.createElement('div', { style: listStyle }, items));
       }
     }]);
 
