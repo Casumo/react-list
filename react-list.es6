@@ -17,6 +17,7 @@ const NOOP = () => {};
 // If a browser doesn't support the `options` argument to
 // add/removeEventListener, we need to check, otherwise we will
 // accidentally set `capture` with a truthy value.
+
 const PASSIVE = (() => {
   if (typeof window === 'undefined') return false;
   let hasSupport = false;
@@ -139,6 +140,10 @@ module.exports = class ReactList extends Component {
   }
 
   getEl() {
+    if (this.props.el) {
+      return this.props.el;
+    }
+
     return this.el || this.items;
   }
 
