@@ -17,7 +17,6 @@ const NOOP = () => {};
 // If a browser doesn't support the `options` argument to
 // add/removeEventListener, we need to check, otherwise we will
 // accidentally set `capture` with a truthy value.
-
 const PASSIVE = (() => {
   if (typeof window === 'undefined') return false;
   let hasSupport = false;
@@ -102,8 +101,6 @@ module.exports = class ReactList extends Component {
     const {initialIndex} = props;
     const itemsPerRow = 1;
     const {from, size} = this.constrain(initialIndex, 0, itemsPerRow, props);
-    this.window = props.window || window;
-    this.document = this.window.document;
     this.state = {from, size, itemsPerRow};
     this.cache = {};
     this.cachedScrollPosition = null;
@@ -152,7 +149,7 @@ module.exports = class ReactList extends Component {
   }
 
   componentWillUnmount() {
-    this.window.removeEventListener('resize', this.updateFrameAndClearCache);
+    window.removeEventListener('resize', this.updateFrameAndClearCache);
     this.scrollParent.removeEventListener('scroll', this.updateFrameAndClearCache, PASSIVE);
     this.scrollParent.removeEventListener('mousewheel', NOOP, PASSIVE);
   }
@@ -166,10 +163,6 @@ module.exports = class ReactList extends Component {
   }
 
   getEl() {
-    if (this.props.el) {
-      return this.props.el;
-    }
-
     return this.el || this.items;
   }
 
@@ -177,14 +170,13 @@ module.exports = class ReactList extends Component {
     // Cache scroll position as this causes a forced synchronous layout.
     if (typeof this.cachedScrollPosition === 'number') return this.cachedScrollPosition;
     const {scrollParent} = this;
-    const {body, documentElement} = this.document;
     const {axis} = this.props;
     const scrollKey = SCROLL_START_KEYS[axis];
-    const actual = scrollParent === this.window ?
+    const actual = scrollParent === window ?
       // Firefox always returns document.body[scrollKey] as 0 and Chrome/Safari
       // always return document.documentElement[scrollKey] as 0, so take
       // whichever has a value.
-      body[scrollKey] || documentElement[scrollKey] :
+      document.body[scrollKey] || document.documentElement[scrollKey] :
       scrollParent[scrollKey];
     const max = this.getScrollSize() - this.props.scrollParentViewportSizeGetter(this);
     const scroll = Math.max(0, Math.min(actual, max));
@@ -197,7 +189,7 @@ module.exports = class ReactList extends Component {
     const {scrollParent} = this;
     const {axis} = this.props;
     offset += this.getOffset(this.getEl());
-    if (scrollParent === this.window) return this.window.scrollTo(0, offset);
+    if (scrollParent === window) return window.scrollTo(0, offset);
 
     offset -= this.getOffset(this.scrollParent);
     scrollParent[SCROLL_START_KEYS[axis]] = offset;
@@ -205,9 +197,9 @@ module.exports = class ReactList extends Component {
 
   getScrollSize() {
     const {scrollParent} = this;
-    const {body, documentElement} = this.document;
+    const {body, documentElement} = document;
     const key = SCROLL_SIZE_KEYS[this.props.axis];
-    return scrollParent === this.window ?
+    return scrollParent === window ?
       Math.max(body[key], documentElement[key]) :
       scrollParent[key];
   }
@@ -234,7 +226,7 @@ module.exports = class ReactList extends Component {
       return {itemSize, itemsPerRow};
     }
 
-    const itemEls = this.items.children;
+    const itemEls = this.items && this.items.children;
     if (!itemEls.length) return {};
 
     const firstEl = itemEls[0];

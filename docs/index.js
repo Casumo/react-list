@@ -55,82 +55,82 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
 var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
 function toObject(val) {
-  if (val === null || val === undefined) {
-    throw new TypeError('Object.assign cannot be called with null or undefined');
-  }
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
 
-  return Object(val);
+	return Object(val);
 }
 
 function shouldUseNative() {
-  try {
-    if (!Object.assign) {
-      return false;
-    }
+	try {
+		if (!Object.assign) {
+			return false;
+		}
 
-    // Detect buggy property enumeration order in older V8 versions.
+		// Detect buggy property enumeration order in older V8 versions.
 
-    // https://bugs.chromium.org/p/v8/issues/detail?id=4118
-    var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-    test1[5] = 'de';
-    if (Object.getOwnPropertyNames(test1)[0] === '5') {
-      return false;
-    }
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
 
-    // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-    var test2 = {};
-    for (var i = 0; i < 10; i++) {
-      test2['_' + String.fromCharCode(i)] = i;
-    }
-    var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-      return test2[n];
-    });
-    if (order2.join('') !== '0123456789') {
-      return false;
-    }
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
 
-    // https://bugs.chromium.org/p/v8/issues/detail?id=3056
-    var test3 = {};
-    'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-      test3[letter] = letter;
-    });
-    if (Object.keys(Object.assign({}, test3)).join('') !==
-        'abcdefghijklmnopqrst') {
-      return false;
-    }
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
 
-    return true;
-  } catch (err) {
-    // We don't expect any of the above to throw, but better to be safe.
-    return false;
-  }
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
 }
 
 module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-  var from;
-  var to = toObject(target);
-  var symbols;
+	var from;
+	var to = toObject(target);
+	var symbols;
 
-  for (var s = 1; s < arguments.length; s++) {
-    from = Object(arguments[s]);
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
 
-    for (var key in from) {
-      if (hasOwnProperty.call(from, key)) {
-        to[key] = from[key];
-      }
-    }
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
 
-    if (getOwnPropertySymbols) {
-      symbols = getOwnPropertySymbols(from);
-      for (var i = 0; i < symbols.length; i++) {
-        if (propIsEnumerable.call(from, symbols[i])) {
-          to[symbols[i]] = from[symbols[i]];
-        }
-      }
-    }
-  }
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
 
-  return to;
+	return to;
 };
 });
 Cogs.define("node_modules/fbjs/lib/invariant.js", function (COGS_REQUIRE, COGS_REQUIRE_ASYNC, module, exports) {
@@ -1871,7 +1871,7 @@ if (enableSuspense) {
 
 
 var React$2 = Object.freeze({
-  default: React
+	default: React
 });
 
 var React$3 = ( React$2 && React ) || React$2;
@@ -2910,13 +2910,13 @@ function injectEventPluginsByName(injectedNamesToPlugins) {
 }
 
 var EventPluginRegistry = Object.freeze({
-  plugins: plugins,
-  eventNameDispatchConfigs: eventNameDispatchConfigs,
-  registrationNameModules: registrationNameModules,
-  registrationNameDependencies: registrationNameDependencies,
-  possibleRegistrationNames: possibleRegistrationNames,
-  injectEventPluginOrder: injectEventPluginOrder,
-  injectEventPluginsByName: injectEventPluginsByName
+	plugins: plugins,
+	eventNameDispatchConfigs: eventNameDispatchConfigs,
+	registrationNameModules: registrationNameModules,
+	registrationNameDependencies: registrationNameDependencies,
+	possibleRegistrationNames: possibleRegistrationNames,
+	injectEventPluginOrder: injectEventPluginOrder,
+	injectEventPluginsByName: injectEventPluginsByName
 });
 
 var getFiberCurrentPropsFromNode = null;
@@ -3236,10 +3236,10 @@ function runExtractedEventsInBatch(topLevelType, targetInst, nativeEvent, native
 }
 
 var EventPluginHub = Object.freeze({
-  injection: injection,
-  getListener: getListener,
-  runEventsInBatch: runEventsInBatch,
-  runExtractedEventsInBatch: runExtractedEventsInBatch
+	injection: injection,
+	getListener: getListener,
+	runEventsInBatch: runEventsInBatch,
+	runExtractedEventsInBatch: runExtractedEventsInBatch
 });
 
 var IndeterminateComponent = 0; // Before we know whether it is functional or class
@@ -3337,12 +3337,12 @@ function updateFiberProps(node, props) {
 }
 
 var ReactDOMComponentTree = Object.freeze({
-  precacheFiberNode: precacheFiberNode,
-  getClosestInstanceFromNode: getClosestInstanceFromNode,
-  getInstanceFromNode: getInstanceFromNode$1,
-  getNodeFromInstance: getNodeFromInstance$1,
-  getFiberCurrentPropsFromNode: getFiberCurrentPropsFromNode$1,
-  updateFiberProps: updateFiberProps
+	precacheFiberNode: precacheFiberNode,
+	getClosestInstanceFromNode: getClosestInstanceFromNode,
+	getInstanceFromNode: getInstanceFromNode$1,
+	getNodeFromInstance: getNodeFromInstance$1,
+	getFiberCurrentPropsFromNode: getFiberCurrentPropsFromNode$1,
+	updateFiberProps: updateFiberProps
 });
 
 function getParent(inst) {
@@ -3579,10 +3579,10 @@ function accumulateDirectDispatches(events) {
 }
 
 var EventPropagators = Object.freeze({
-  accumulateTwoPhaseDispatches: accumulateTwoPhaseDispatches,
-  accumulateTwoPhaseDispatchesSkipTarget: accumulateTwoPhaseDispatchesSkipTarget,
-  accumulateEnterLeaveDispatches: accumulateEnterLeaveDispatches,
-  accumulateDirectDispatches: accumulateDirectDispatches
+	accumulateTwoPhaseDispatches: accumulateTwoPhaseDispatches,
+	accumulateTwoPhaseDispatchesSkipTarget: accumulateTwoPhaseDispatchesSkipTarget,
+	accumulateEnterLeaveDispatches: accumulateEnterLeaveDispatches,
+	accumulateDirectDispatches: accumulateDirectDispatches
 });
 
 // Do not uses the below two methods directly!
@@ -4601,10 +4601,10 @@ function restoreStateIfNeeded() {
 }
 
 var ReactControlledComponent = Object.freeze({
-  injection: injection$2,
-  enqueueStateRestore: enqueueStateRestore,
-  needsStateRestore: needsStateRestore,
-  restoreStateIfNeeded: restoreStateIfNeeded
+	injection: injection$2,
+	enqueueStateRestore: enqueueStateRestore,
+	needsStateRestore: needsStateRestore,
+	restoreStateIfNeeded: restoreStateIfNeeded
 });
 
 // Used as a way to call batchedUpdates when we don't have a reference to
@@ -7058,12 +7058,12 @@ function dispatchEvent(topLevelType, nativeEvent) {
 }
 
 var ReactDOMEventListener = Object.freeze({
-  get _enabled () { return _enabled; },
-  setEnabled: setEnabled,
-  isEnabled: isEnabled,
-  trapBubbledEvent: trapBubbledEvent,
-  trapCapturedEvent: trapCapturedEvent,
-  dispatchEvent: dispatchEvent
+	get _enabled () { return _enabled; },
+	setEnabled: setEnabled,
+	isEnabled: isEnabled,
+	trapBubbledEvent: trapBubbledEvent,
+	trapCapturedEvent: trapCapturedEvent,
+	dispatchEvent: dispatchEvent
 });
 
 /**
@@ -10463,19 +10463,19 @@ function restoreControlledState$1(domElement, tag, props) {
 }
 
 var ReactDOMFiberComponent = Object.freeze({
-  createElement: createElement$1,
-  createTextNode: createTextNode$1,
-  setInitialProperties: setInitialProperties$1,
-  diffProperties: diffProperties$1,
-  updateProperties: updateProperties$1,
-  diffHydratedProperties: diffHydratedProperties$1,
-  diffHydratedText: diffHydratedText$1,
-  warnForUnmatchedText: warnForUnmatchedText$1,
-  warnForDeletedHydratableElement: warnForDeletedHydratableElement$1,
-  warnForDeletedHydratableText: warnForDeletedHydratableText$1,
-  warnForInsertedHydratedElement: warnForInsertedHydratedElement$1,
-  warnForInsertedHydratedText: warnForInsertedHydratedText$1,
-  restoreControlledState: restoreControlledState$1
+	createElement: createElement$1,
+	createTextNode: createTextNode$1,
+	setInitialProperties: setInitialProperties$1,
+	diffProperties: diffProperties$1,
+	updateProperties: updateProperties$1,
+	diffHydratedProperties: diffHydratedProperties$1,
+	diffHydratedText: diffHydratedText$1,
+	warnForUnmatchedText: warnForUnmatchedText$1,
+	warnForDeletedHydratableElement: warnForDeletedHydratableElement$1,
+	warnForDeletedHydratableText: warnForDeletedHydratableText$1,
+	warnForInsertedHydratedElement: warnForInsertedHydratedElement$1,
+	warnForInsertedHydratedText: warnForInsertedHydratedText$1,
+	restoreControlledState: restoreControlledState$1
 });
 
 // TODO: direct imports like some-package/src/* are bad. Fix me.
@@ -14242,7 +14242,7 @@ function coerceRef(returnFiber, current, element) {
       if (returnFiber.mode & StrictMode) {
         var componentName = getComponentName(returnFiber) || 'Component';
         if (!didWarnAboutStringRefInStrictMode[componentName]) {
-          warning(false, 'A string ref, "%s", has been found within a strict mode tree. ' + 'String refs are a source of potential bugs and should be avoided. ' + 'We recommend using createRef() instead.' + '\n%s' + '\n\nLearn more about using refs safely here:' + '\nhttps://fb.me/react-strict-mode-string-ref', mixedRef, getStackAddendumByWorkInProgressFiber(returnFiber));
+          warning(false, 'A string ref, "%s", has been found within a strict mode tree. ' + 'String refs are a source of potential bugs and should be avoided. ' + 'We recommend using createRef() instead.' + '\n%s' + '\n\nLearn more about using refs safely here:' + '\nhttps://fb.me/react-strict-mode-string-ref', mixedRef, getStackAddendumByWorkInProgressFiber(returnFiber));
           didWarnAboutStringRefInStrictMode[componentName] = true;
         }
       }
@@ -19268,24 +19268,24 @@ function injectIntoDevTools(devToolsConfig) {
 
 
 var DOMRenderer = Object.freeze({
-  updateContainerAtExpirationTime: updateContainerAtExpirationTime,
-  createContainer: createContainer,
-  updateContainer: updateContainer,
-  flushRoot: flushRoot,
-  requestWork: requestWork,
-  computeUniqueAsyncExpiration: computeUniqueAsyncExpiration,
-  batchedUpdates: batchedUpdates$1,
-  unbatchedUpdates: unbatchedUpdates,
-  deferredUpdates: deferredUpdates,
-  syncUpdates: syncUpdates,
-  interactiveUpdates: interactiveUpdates$1,
-  flushInteractiveUpdates: flushInteractiveUpdates$1,
-  flushControlled: flushControlled,
-  flushSync: flushSync,
-  getPublicRootInstance: getPublicRootInstance,
-  findHostInstance: findHostInstance,
-  findHostInstanceWithNoPortals: findHostInstanceWithNoPortals,
-  injectIntoDevTools: injectIntoDevTools
+	updateContainerAtExpirationTime: updateContainerAtExpirationTime,
+	createContainer: createContainer,
+	updateContainer: updateContainer,
+	flushRoot: flushRoot,
+	requestWork: requestWork,
+	computeUniqueAsyncExpiration: computeUniqueAsyncExpiration,
+	batchedUpdates: batchedUpdates$1,
+	unbatchedUpdates: unbatchedUpdates,
+	deferredUpdates: deferredUpdates,
+	syncUpdates: syncUpdates,
+	interactiveUpdates: interactiveUpdates$1,
+	flushInteractiveUpdates: flushInteractiveUpdates$1,
+	flushControlled: flushControlled,
+	flushSync: flushSync,
+	getPublicRootInstance: getPublicRootInstance,
+	findHostInstance: findHostInstance,
+	findHostInstanceWithNoPortals: findHostInstanceWithNoPortals,
+	injectIntoDevTools: injectIntoDevTools
 });
 
 function createPortal$1(children, containerInfo,
@@ -19795,7 +19795,7 @@ var foundDevTools = injectIntoDevTools({
 
 
 var ReactDOM$2 = Object.freeze({
-  default: ReactDOM
+	default: ReactDOM
 });
 
 var ReactDOM$3 = ( ReactDOM$2 && ReactDOM ) || ReactDOM$2;
