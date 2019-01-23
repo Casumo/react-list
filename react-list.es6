@@ -227,6 +227,7 @@ module.exports = class ReactList extends Component {
     }
 
     const itemEls = this.items && this.items.children;
+    console.log(itemEls);
     if (!itemEls.length) return {};
 
     const firstEl = itemEls[0];

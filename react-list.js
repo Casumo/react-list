@@ -311,6 +311,7 @@
         }
 
         var itemEls = this.items && this.items.children;
+        console.log(itemEls);
         if (!itemEls.length) return {};
 
         var firstEl = itemEls[0];
