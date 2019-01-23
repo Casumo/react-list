@@ -1,12 +1,5 @@
 # Changelog
 
-## 0.8.11
-- Reduce MAX_SYNC_UPDATES to 50 to match [upstream
-  changes](https://github.com/facebook/react/pull/13163).
-
-## 0.8.10
-- Add `scrollParentViewportSizeGetter` prop.
-
 ## 0.8.7
 - Remove `findDOMNode` (and consequently the `react-dom` peer dependency) in
   favor of the preferred `ref={c => this.el = c}` pattern.
