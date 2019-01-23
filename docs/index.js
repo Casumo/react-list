@@ -20795,7 +20795,7 @@ Cogs.define("react-list.js", function (COGS_REQUIRE, COGS_REQUIRE_ASYNC, module,
           return { itemSize: itemSize, itemsPerRow: itemsPerRow };
         }
 
-        var itemEls = this.items.children;
+        var itemEls = this.items && this.items.children;
         if (!itemEls.length) return {};
 
         var firstEl = itemEls[0];
