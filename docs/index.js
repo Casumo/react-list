@@ -21876,7 +21876,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
           return { itemSize: itemSize, itemsPerRow: itemsPerRow };
         }
 
-        var itemEls = this.items && this.items.children;
+        if (!this.items) return {};
+
+        var itemEls = this.items.children;
         if (!itemEls.length) return {};
 
         var firstEl = itemEls[0];
