@@ -121,7 +121,7 @@ module.exports = class ReactList extends Component {
 
   componentDidMount() {
     this.updateFrameAndClearCache = this.updateFrameAndClearCache.bind(this);
-    window.addEventListener('resize', this.updateFrameAndClearCache);
+    this.window.addEventListener('resize', this.updateFrameAndClearCache);
     this.updateFrame(this.scrollTo.bind(this, this.props.initialIndex));
   }
 
