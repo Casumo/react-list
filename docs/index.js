@@ -20663,7 +20663,7 @@ Cogs.define("react-list.js", function (COGS_REQUIRE, COGS_REQUIRE_ASYNC, module,
       key: 'componentDidMount',
       value: function componentDidMount() {
         this.updateFrameAndClearCache = this.updateFrameAndClearCache.bind(this);
-        window.addEventListener('resize', this.updateFrameAndClearCache);
+        this.window.addEventListener('resize', this.updateFrameAndClearCache);
         this.updateFrame(this.scrollTo.bind(this, this.props.initialIndex));
       }
     }, {
